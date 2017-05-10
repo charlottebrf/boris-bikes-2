@@ -7,12 +7,15 @@ class DockingStation
     if bike == nil
       raise('Sorry there are no bikes')
     else
-      Bike.new
+      bike
     end
   end
 
   def docks_bike (bikeinstance)
-    @bike = bikeinstance
+    if bike != nil
+      raise('There are no spaces left')
+    else
+      @bike = bikeinstance
+    end
   end
-
 end
