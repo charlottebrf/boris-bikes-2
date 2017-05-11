@@ -14,7 +14,6 @@ class DockingStation
     removes_bike
   end
 
-
   def docks_bike (bikeinstance)
     full?
     @bikes << bikeinstance
