@@ -16,13 +16,13 @@ describe DockingStation do
   it "docks bike" do
     bike = Bike.new
     docked_bike = station.docks_bike(bike)
-    expect(docked_bike).to eq bike
+    expect(docked_bike).to eq [bike]
   end
 
   it "returns docked bike" do
     bike = Bike.new
     station.docks_bike(bike)
-    expect(station.bike).to eq bike
+    expect(station.bikes).to eq [bike]
   end
 
   it "does not release a bike if there are no bikes available" do
@@ -36,9 +36,8 @@ describe DockingStation do
   end
 
   it "does not release a bike if there are no bikes docked" do
-    bike = Bike.new
-    station.docks_bike(bike)
-    bike2 = Bike.new
-    expect { station.docks_bike(bike2)}.to raise_error('There are no spaces left')
+    20.times {station.docks_bike Bike.new}
+    bike21 = Bike.new
+    expect { station.docks_bike(bike21)}.to raise_error('There are no spaces left')
   end
 end
