@@ -11,8 +11,9 @@ class DockingStation
 
   def release_bike
     empty?
-    bikes.pop
+    removes_bike
   end
+
 
   def docks_bike (bikeinstance)
     full?
@@ -29,4 +30,9 @@ class DockingStation
     raise('Sorry there are no bikes') if bikes.length < 1
   end
 
+  def removes_bike
+    bikes.each{ |bike|
+      (@bikes.delete(bike); return bike) if bike.working?
+      raise 'Only broken bikes' }
+  end
 end
