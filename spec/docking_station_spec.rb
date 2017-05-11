@@ -36,7 +36,7 @@ describe DockingStation do
   end
 
   it "does not release a bike if there are no bikes docked" do
-    20.times {station.docks_bike Bike.new}
+    DockingStation::DEFAULT_CAPACITY.times {station.docks_bike Bike.new}
     bike21 = Bike.new
     expect { station.docks_bike(bike21)}.to raise_error('There are no spaces left')
   end

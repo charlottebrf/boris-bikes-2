@@ -1,6 +1,7 @@
 require './lib/bike.rb'
 
 class DockingStation
+  DEFAULT_CAPACITY = 20
   attr_reader :bikes
 
   def initialize
@@ -20,7 +21,7 @@ class DockingStation
   private
 
   def full?
-    raise('There are no spaces left') if bikes.length >= 20
+    raise('There are no spaces left') if bikes.length >= DEFAULT_CAPACITY
   end
 
   def empty?
