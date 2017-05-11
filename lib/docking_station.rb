@@ -4,18 +4,13 @@ class DockingStation
   attr_reader :bike
 
   def release_bike
-    if bike == nil
-      raise('Sorry there are no bikes')
-    else
-      bike
-    end
+    raise('Sorry there are no bikes') if bike == nil
+    bike
   end
 
   def docks_bike (bikeinstance)
-    if bike != nil
-      raise('There are no spaces left')
-    else
-      @bike = bikeinstance
-    end
+    raise('There are no spaces left') if bike != nil
+    @bike = bikeinstance
   end
+
 end
