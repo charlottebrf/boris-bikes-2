@@ -8,13 +8,23 @@ class DockingStation
   end
 
   def release_bike
-    raise('Sorry there are no bikes') if bikes.length < 1
+    empty?
     bikes.pop
   end
 
   def docks_bike (bikeinstance)
-    raise('There are no spaces left') if bikes.length >= 20
+    full?
     @bikes << bikeinstance
+  end
+
+  private
+
+  def full?
+    raise('There are no spaces left') if bikes.length >= 20
+  end
+
+  def empty?
+    raise('Sorry there are no bikes') if bikes.length < 1
   end
 
 end
