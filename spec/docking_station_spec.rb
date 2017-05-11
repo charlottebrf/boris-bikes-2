@@ -40,4 +40,11 @@ describe DockingStation do
     bike21 = Bike.new
     expect { station.docks_bike(bike21)}.to raise_error('There are no spaces left')
   end
+
+  it "will give default capacity if no parameter is given, else capacity = parameter" do
+    station_1 = DockingStation.new
+    station_2 = DockingStation.new(40)
+    expect(station_1.capacity).to eq 20
+    expect(station_2.capacity).to eq 40
+  end
 end

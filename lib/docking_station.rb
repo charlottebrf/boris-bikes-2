@@ -2,10 +2,11 @@ require './lib/bike.rb'
 
 class DockingStation
   DEFAULT_CAPACITY = 20
-  attr_reader :bikes
+  attr_reader :bikes, :capacity
 
-  def initialize
+  def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
+    @capacity = capacity
   end
 
   def release_bike
@@ -21,7 +22,7 @@ class DockingStation
   private
 
   def full?
-    raise('There are no spaces left') if bikes.length >= DEFAULT_CAPACITY
+    raise('There are no spaces left') if bikes.length >= capacity
   end
 
   def empty?
